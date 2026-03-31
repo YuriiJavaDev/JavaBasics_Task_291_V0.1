@@ -7,3 +7,22 @@
 #### - But you also have specialized baskets! Create an AppleBasket class, which inherits from Basket. This basket should be specialized for apples. So, override the getFruit() method in the AppleBasket class, but this time specify that it returns an Apple object, not just a Fruit. This is called a **covariant return type**—you're returning a more specific type than the parent class.
 
 #### - In your main method, create an AppleBasket object and call its getFruit() method. Store the result in a variable, such as harvestedItem. Then use the instanceof operator to check whether harvestedItem is actually an Apple object. If so, print "Apple created," confirming that you actually got an apple from the specialized basket.
+
+```java
+public class HarvestLauncherApp {
+
+    public static void main(String[] args) {
+        // Create the specialized basket
+        AppleBasket appleBasket = new AppleBasket();
+
+        // Retrieve an item. Even though the method returns Apple,
+        // it is perfectly fine to store it in a Fruit variable.
+        Fruit harvestedItem = appleBasket.getFruit();
+
+        // Verify the actual type at runtime
+        if (harvestedItem instanceof Apple) {
+            System.out.println("Apple created");
+        }
+    }
+}
+```
