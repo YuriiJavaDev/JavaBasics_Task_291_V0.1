@@ -14,23 +14,23 @@ To override a method, you need to declare a method in the child class with the e
 
 ```java
 class Animal {
-void makeSound() {
-System.out.println("Some generic animal sound");
-}
+    void makeSound() {
+    System.out.println("Some generic animal sound");
+    }
 }
 
 class Dog extends Animal {
-// Override the makeSound() method
-void makeSound() {
-System.out.println("Woof!");
-}
+    // Override the makeSound() method
+    void makeSound() {
+    System.out.println("Woof!");
+    }
 }
 
 class Cat extends Animal {
-// Override the makeSound() method
-void makeSound() {
-System.out.println("Meow!");
-}
+    // Override the makeSound() method
+    void makeSound() {
+    System.out.println("Meow!");
+    }
 }
 ```
 
@@ -40,15 +40,16 @@ Now, if you create a **Dog** object and call **makeSound()**, you'll hear "**Woo
 
 ```java
 public class Main {
+    
 public static void main(String[] args) {
-Animal generic = new Animal();
-Dog dog = new Dog();
-Cat cat = new Cat();
+    Animal generic = new Animal();
+    Dog dog = new Dog();
+    Cat cat = new Cat();
 
-generic.makeSound(); // Some generic animal sound
-dog.makeSound(); // Woof!
-cat.makeSound(); // Meow!
-}
+    generic.makeSound(); // Some generic animal sound
+    dog.makeSound(); // Woof!
+    cat.makeSound(); // Meow!
+    }
 }
 ```
 
@@ -65,10 +66,10 @@ In Java, it's common to mark overridden methods with the special **@Override** a
 
 ```java
 class Dog extends Animal {
-@Override
-void makeSound() {
-System.out.println("Woof!");
-}
+    @Override
+    void makeSound() {
+    System.out.println("Woof!");
+    }
 }
 ```
 
@@ -83,8 +84,8 @@ When you call a method on a subclass object, the subclass's implementation will 
 **Example: Polymorphism in Action**
 
 ```java
-Animal animal = new Dog();
-animal.makeSound(); // "Woof!", not "Some generic animal sound"
+    Animal animal = new Dog();
+    animal.makeSound(); // "Woof!", not "Some generic animal sound"
 ```
 
 Here, the variable is of type **Animal**, but it actually contains a **Dog** object. Java "understands" that it needs to call the overridden method from **Dog**. This is **polymorphism** (more details in the following lectures).
@@ -127,13 +128,14 @@ It's time to put theory into practice! Let's continue developing our zoo app.
 
 ```java
 public class Animal {
-public void makeSound() {
-System.out.println("Some generic animal sound");
-}
+    
+    public void makeSound() {
+    System.out.println("Some generic animal sound");
+    }
 
-public void sleep() {
-System.out.println("Zzz...");
-}
+    public void sleep() {
+    System.out.println("Zzz...");
+    }
 }
 ```
 
@@ -141,27 +143,27 @@ System.out.println("Zzz...");
 
 ```java
 public class Dog extends Animal {
-@Override
-public void makeSound() {
-System.out.println("Woof!");
-}
+    @Override
+    public void makeSound() {
+    System.out.println("Woof!");
+    }
 
-// Additional method just for Dog
-public void fetch() {
-System.out.println("Dog brings the stick!");
-}
+    // Additional method just for Dog
+    public void fetch() {
+    System.out.println("Dog brings the stick!");
+    }
 }
 
 public class Cat extends Animal {
-@Override
-public void makeSound() {
-System.out.println("Meow!");
-}
+    @Override
+    public void makeSound() {
+    System.out.println("Meow!");
+    }
 
-// Additional method just for Cat
-public void scratch() {
-System.out.println("Cat scratches the sofa!");
-}
+    // Additional method just for Cat
+    public void scratch() {
+    System.out.println("Cat scratches the sofa!");
+    }
 }
 ```
 
@@ -169,26 +171,27 @@ System.out.println("Cat scratches the sofa!");
 
 ```java
 public class ZooTest {
+    
 public static void main(String[] args) {
-Animal generic = new Animal();
-Animal dog = new Dog();
-Animal cat = new Cat();
+    Animal generic = new Animal();
+    Animal dog = new Dog();
+    Animal cat = new Cat();
 
-generic.makeSound(); // Some generic animal sound
-dog.makeSound(); // Woof!
-cat.makeSound(); // Meow!
+    generic.makeSound(); // Some generic animal sound
+    dog.makeSound(); // Woof!
+    cat.makeSound(); // Meow!
 
-// dog.fetch(); // Error! Animal variable doesn't know about fetch()
-// cat.scratch(); // Similar
+    // dog.fetch(); // Error! Animal variable doesn't know about fetch()
+    // cat.scratch(); // Similar
 
-// But if you explicitly specify the type:
-if (dog instanceof Dog) {
-((Dog) dog).fetch(); // Dog brings the stick!
-}
-if (cat instanceof Cat) {
-((Cat) cat).scratch(); // Cat scratches the sofa!
-}
-}
+        // But if you explicitly specify the type:
+        if (dog instanceof Dog) {
+        ((Dog) dog).fetch(); // Dog brings the stick!
+        }
+        if (cat instanceof Cat) {
+        ((Cat) cat).scratch(); // Cat scratches the sofa!
+        }
+    }
 }
 ```
 
@@ -202,16 +205,16 @@ Sometimes you want an overridden method to return a narrower type. For example:
 
 ```java
 class Animal {
-Animal getFriend() {
-return new Animal();
-}
+    Animal getFriend() {
+    return new Animal();
+    }
 }
 
 class Dog extends Animal {
-@Override
-Dog getFriend() { // Return type is Dog, a subtype of Animal
-return new Dog();
-}
+    @Override
+    Dog getFriend() { // Return type is Dog, a subtype of Animal
+    return new Dog();
+    }
 }
 ```
 
@@ -225,17 +228,17 @@ If you accidentally misspell a method name or parameters, Java won't complain un
 
 ```java
 class Dog extends Animal {
-// Typo: makeSoud instead of makeSound
-void makeSoud() {
-System.out.println("Woof!");
-}
+    // Typo: makeSoud instead of makeSound
+    void makeSoud() {
+    System.out.println("Woof!");
+    }
 }
 
 public class Main {
 public static void main(String[] args) {
-Animal dog = new Dog();
-dog.makeSound(); // Outputs "Some generic animal sound"
-}
+    Animal dog = new Dog();
+    dog.makeSound(); // Outputs "Some generic animal sound"
+    }
 }
 ```
 
