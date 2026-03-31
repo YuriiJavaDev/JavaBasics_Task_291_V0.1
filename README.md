@@ -41,7 +41,6 @@ Project Structure:
     │                     │   └── Apple.java
     │                     └── Fruit.java
     ├── .gitignore
-    ├── JavaBasics_Task_291_V0.1.iml
     ├── LICENSE
     ├── TASK.md
     ├── THEORY.md
